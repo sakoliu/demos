@@ -3,7 +3,7 @@
   <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>simple clock</title>
+    <title>Clock2</title>
   </head>
   <body>
     <!-- DOM 容器 -->
@@ -13,6 +13,7 @@
     <script src='../../assets/react-dom.development.js' crossorigin></script>
     <script src='../../assets/babel.min.js'></script>
     <script type='text/babel'>
+      // class组件
       class Clock extends React.Component {
         constructor(props) {
           super(props);
@@ -37,10 +38,15 @@
           return (
             <div>
               <h1>This is a Simple Clock</h1>
-              <p>Now time is { this.state.date.toLocaleTimeString() }.</p>
+              <FormattedDate date={this.state.date} />
             </div>
           );
         }
+      }
+
+      // 函数组件
+      function FormattedDate (props) {
+        return <h2>Now time is {props.date.toLocaleTimeString()}.</h2>
       }
 
       const root = document.getElementById('root');

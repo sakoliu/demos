@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+  <html lang='zh'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Clock1</title>
+  </head>
+  <body>
+    <!-- DOM 容器 -->
+    <div id='root'></div>
+    <!-- 加载 React -->
+    <script src='../../assets/react.development.js' crossorigin></script>
+    <script src='../../assets/react-dom.development.js' crossorigin></script>
+    <script src='../../assets/babel.min.js'></script>
+    <script type='text/babel'>
+      class Clock extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { date: new Date() };
+        }
+
+        componentDidMount () {
+          this.timer = setInterval(this.tick, 1000);
+        }
+
+        componentWillUnmount () {
+          clearInterval(this.timer);
+        }
+
+        tick = () => {
+          this.setState({
+            date: new Date()
+          });
+        }
+
+        render() {
+          return (
+            <div>
+              <h1>This is a Simple Clock</h1>
+              <h2>Now time is { this.state.date.toLocaleTimeString() }.</h2>
+            </div>
+          );
+        }
+      }
+
+      const root = document.getElementById('root');
+
+      ReactDOM.render(<Clock/>, root);
+    </script>
+  </body>
+</html>
