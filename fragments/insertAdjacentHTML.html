@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      border: 1px solid #ccc;
+      padding: 0 5px;
+    }
+    .line {
+      height: 20px;
+      background: tan;
+      margin: 5px 0;
+    }
+    .orange {
+      background: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="box">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <hr>
+
+  <button onclick="location.reload()">reset</button>
+
+  <button type="button" onclick="insert('beforebegin')">beforebegin</button>
+  <button type="button" onclick="insert('beforeend')">beforeend</button>
+  <button type="button" onclick="insert('afterbegin')">afterbegin</button>
+  <button type="button" onclick="insert('afterend')">afterend</button>
+
+  <script>
+    const line = '<div class="line orange"></div>'
+    const box = document.getElementById('box');
+    function insert (action) {
+      box.insertAdjacentHTML(action, line);
+    }
+  </script>
+</body>
+</html>
