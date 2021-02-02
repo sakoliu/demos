@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diff innerText and textContent</title>
+  <style>
+    .none {
+      display: none;
+    }
+    .res-item {
+      padding: 5px;
+      margin: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="text1">text1<p>...</p><p class="none">我是隐藏的</p></div>
+  <div id="text2">text2<p>...</p><p class="none">我是隐藏的</p></div>
+
+  <div class="res">
+    <h5>innerText</h5>
+    <div class="res-item" id="res1"></div>
+    <h5>textContent</h5>
+    <div class="res-item" id="res2"></div>
+  </div>
+
+  <script>
+    const dg = document.getElementById;
+
+    const txt1 = document.getElementById('text1');
+    const txt2 = document.getElementById('text2');
+    const res1 = document.getElementById('res1');
+    const res2 = document.getElementById('res2');
+
+    res1.textContent = txt1.innerText;
+    res2.textContent = txt2.textContent;
+  </script>
+</body>
+</html>
