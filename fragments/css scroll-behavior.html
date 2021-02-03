@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh" class="123">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css scroll-behavior</title>
+  <style>
+    .scroll-better {
+      scroll-behavior: smooth;
+    }
+    .actions {
+      display: inline-block;
+      position: fixed;
+      right: 20px;
+      bottom: 15px;
+    }
+  </style>
+</head>
+<body style="height: 3000px;">
+  <h1>top</h1>
+  <div class="actions">
+    <button type="button" onclick="switchScrollBetter()">
+      <span id="state">启用</span> scroll-behavior: smooth
+    </button>
+    <br>
+    <br>
+    <a href="#" >go top</a>
+  </div>
+
+  <script>
+    const stateEl = document.getElementById('state');
+    const docHtml = document.documentElement;
+
+    function enableScrollBetter () {
+      docHtml.classList.add('scroll-better');
+      stateEl.textContent = '停用';
+      console.log('scroll-behavior: smooth; 已启用');
+    }
+
+    function disableScrollBetter () {
+      docHtml.classList.remove('scroll-better');
+      stateEl.textContent = '启用';
+      console.log('scroll-behavior: smooth; 已停用');
+    }
+
+    const state = new Proxy({
+      enable: false
+    }, {
+      set (obj, prop, val) {
+        obj[prop] = val;
+        val ? enableScrollBetter() : disableScrollBetter();
+        return val;
+      }
+    })
+
+    function switchScrollBetter () {
+      state.enable = !state.enable;
+    }
+  </script>
+</body>
+</html>
