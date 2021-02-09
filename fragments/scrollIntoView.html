@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scrollIntoView</title>
+  <style>
+    .box {
+      height: 1000px;
+      margin: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <a id="mdn" href="https://developer.mozilla.org/zh-cn/docs/Web/API/Element/scrollIntoView">MDN</a>
+  </div>
+  <div class="box">
+    <a id="caniuse" href="https://www.caniuse.com/?search=scrollIntoView">can i use</a>
+  </div>
+  <div class="box">
+    <a id="c" href="https://www.baidu.com">333</a>
+  </div>
+
+  <button onclick="aa()" type="button">gogogo</button>
+
+  <script>
+    window.onload = function () {
+      console.dir(document);
+    }
+
+    function aa () {
+      document.getElementById('caniuse').scrollIntoView({
+        // 还支持center和end还有nearest值
+        inline: 'start',
+        // 还支持center和end还有nearest值
+        block: 'start',
+        // 平滑滚动
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+</html>
